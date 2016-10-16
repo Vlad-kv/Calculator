@@ -1,5 +1,6 @@
 package com.vlad_kv.calculator;
 
+import android.icu.math.BigDecimal;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +23,129 @@ public class MainActivity extends AppCompatActivity {
         input = (EditText)findViewById(R.id.input);
     }
 
+    private String inStr;
+    int pos;
+
+    char nextChar() {
+        while ((pos < inStr.length()) && (inStr.charAt(pos) == ' ')) {
+            pos++;
+        }
+        if (pos == inStr.length()) {
+            return 0;
+        }
+        return inStr.charAt(pos);
+    }
+
+    boolean isDigit(char c) {
+        return (('0' <= c) && (c <= '9'));
+    }
+
+    double getNumber() throws MyException{
+        if (! isDigit(nextChar())) {
+            throw new IncorrectExpressionException();
+        }
+
+        double res = 0;
+
+        while (isDigit(nextChar())) {
+            res = res * 10 + nextChar() - '0';
+            pos++;
+        }
+
+        if (nextChar() != ',') {
+            return res;
+        }
+
+        pos++;
+
+        if (! isDigit(nextChar())) {
+            throw new IncorrectExpressionException();
+        }
+
+        double exp = 1;
+
+        while (isDigit(nextChar())) {
+            exp *= 0.1;
+            res += (nextChar() - '0') * exp;
+            pos++;
+        }
+        return res;
+    }
+
+    double getExpr() throws MyException {
+        if (nextChar() == '(') {
+            pos++;
+            double res = getSum();
+            if (nextChar() != ')') {
+                throw new IncorrectExpressionException();
+            }
+            pos++;
+            return res;
+        }
+        if (nextChar() == '+') {
+            pos++;
+            return getExpr();
+        }
+        if (nextChar() == '-') {
+            pos++;
+            return -getExpr();
+        }
+        return getNumber();
+    }
+
+    double getMultiplication() throws MyException{
+        double res = getExpr();
+        while ((nextChar() == '*') || (nextChar() == '/')) {
+            if (nextChar() == '*') {
+                pos++;
+                res = res * getExpr();
+            } else {
+                pos++;
+                res = res / getExpr();
+            }
+        }
+        return res;
+    }
+
+    double getSum() throws MyException{
+        double res = getMultiplication();
+        while ((nextChar() == '+') || (nextChar() == '-')) {
+            if (nextChar() == '+') {
+                pos++;
+                res = res + getMultiplication();
+            } else {
+                pos++;
+                res = res - getMultiplication();
+            }
+        }
+        return res;
+    }
+
+    double parse() throws MyException {
+        pos = 0;
+        return getSum();
+    }
+
+
+    public void onClickEqv(View view) {
+        inStr = input.getText().toString();
+        double res;
+
+        try{
+            res = parse();
+        } catch (IncorrectExpressionException ex) {
+            result.setText("Incorrect expression.");
+            return;
+        } catch (MyException ex) {
+            result.setText("Error");
+            return;
+        }
+        result.setText(String.valueOf(res));
+    }
 
     public void onClickClear(View view) {
         input.setText("");
+        result.setText("");
     }
 
 
@@ -83,14 +204,25 @@ public class MainActivity extends AppCompatActivity {
                 s = ",";
                 break;
         }
-        input.append(s);
+
+        StringBuilder str = new StringBuilder(input.getText());
+        int pos = input.getSelectionEnd();
+
+        str.insert(pos, s);
+
+        input.setText(str);
+        input.setSelection(pos + 1);
     }
 
     public void onClickDel(View view) {
+        int pos = input.getSelectionEnd();
         StringBuilder str = new StringBuilder(input.getText());
-        if (str.length() > 0) {
-            str.deleteCharAt(str.length() - 1);
+
+        if (pos > 0) {
+            str.deleteCharAt(pos - 1);
+            pos--;
         }
         input.setText(str);
+        input.setSelection(pos);
     }
 }
