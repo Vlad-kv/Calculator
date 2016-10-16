@@ -35,10 +35,11 @@
             android:layout_weight="2"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="<-"
+            android:text="@string/del_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/del" />
+            android:id="@+id/del"
+            android:onClick="onClickDel" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
@@ -46,7 +47,8 @@
             android:text="C"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/clear" />
+            android:id="@+id/clear"
+            android:onClick="onClickClear" />
         <Space
             android:layout_weight="0.15"
 
@@ -82,7 +84,8 @@
             android:text="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d1" />
+            android:id="@+id/d1"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
@@ -90,7 +93,8 @@
             android:text="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d2" />
+            android:id="@+id/d2"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
@@ -98,7 +102,8 @@
             android:text="3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d3" />
+            android:id="@+id/d3"
+            android:onClick="onClickAdded" />
         <Space
             android:layout_weight="0.15"
 
@@ -111,7 +116,8 @@
             android:text="+"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/add" />
+            android:id="@+id/add"
+            android:onClick="onClickAdded" />
 
         <Button
             android:layout_weight="1"
@@ -120,7 +126,8 @@
             android:text="-"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/sub" />
+            android:id="@+id/sub"
+            android:onClick="onClickAdded" />
 
     </LinearLayout>
 
@@ -138,7 +145,8 @@
             android:text="4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d4" />
+            android:id="@+id/d4"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
@@ -146,7 +154,8 @@
             android:text="5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d5" />
+            android:id="@+id/d5"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
@@ -154,7 +163,8 @@
             android:text="6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d6" />
+            android:id="@+id/d6"
+            android:onClick="onClickAdded" />
         <Space
             android:layout_weight="0.15"
 
@@ -167,7 +177,8 @@
             android:text="*"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/mul" />
+            android:id="@+id/mul"
+            android:onClick="onClickAdded" />
 
         <Button
             android:layout_weight="1"
@@ -176,7 +187,8 @@
             android:text="/"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/div" />
+            android:id="@+id/div"
+            android:onClick="onClickAdded" />
 
     </LinearLayout>
 
@@ -192,30 +204,29 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-
             android:text="7"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d7"
-            />
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
-
 
             android:text="8"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d8" />
+            android:id="@+id/d8"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-
             android:text="9"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d9" />
+            android:id="@+id/d9"
+            android:onClick="onClickAdded" />
 
         <Space
             android:layout_weight="0.15"
@@ -231,7 +242,8 @@
             android:text="("
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/left_bracket" />
+            android:id="@+id/left_bracket"
+            android:onClick="onClickAdded" />
 
         <Button
             android:layout_weight="1"
@@ -240,7 +252,8 @@
             android:text=")"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/right_bracket" />
+            android:id="@+id/right_bracket"
+            android:onClick="onClickAdded" />
     </LinearLayout>
 
     <LinearLayout
@@ -257,7 +270,8 @@
             android:text="0"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/d0" />
+            android:id="@+id/d0"
+            android:onClick="onClickAdded" />
         <Button
             android:layout_weight="2"
             android:textSize="@dimen/bottoms_font"
@@ -265,8 +279,8 @@
             android:text=","
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/comma" />
-
+            android:id="@+id/comma"
+            android:onClick="onClickAdded" />
 
         <Space
             android:layout_width="0dp"
