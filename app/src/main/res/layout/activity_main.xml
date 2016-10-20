@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <LinearLayout
         android:layout_weight="1.2"
@@ -13,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal">
-
 
         <Space
             android:layout_weight="1"
@@ -29,7 +26,7 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/input"
-            android:hint="Введите выражение"
+            android:hint="@string/input_hint_text"
             android:lines = "3"
             android:textColorLink="?attr/colorControlNormal"
             android:drawable="?android:attr/colorBackgroundCacheHint"
@@ -95,7 +92,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="C"
+            android:text="@string/clear_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/clear"
@@ -109,7 +106,7 @@
             android:layout_weight="2"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="="
+            android:text="@string/eqv_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/eqv"
@@ -133,16 +130,17 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="1"
+            android:text="@string/d1_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d1"
             android:onClick="onClickAdded" />
+
         <Button
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="2"
+            android:text="@string/d2_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d2"
@@ -151,7 +149,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="3"
+            android:text="@string/d3_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d3"
@@ -165,7 +163,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="+"
+            android:text="@string/add_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/add"
@@ -175,7 +173,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="-"
+            android:text="@string/sub_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/sub"
@@ -194,7 +192,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="4"
+            android:text="@string/d4_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d4"
@@ -203,7 +201,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="5"
+            android:text="@string/d5_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d5"
@@ -212,7 +210,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="6"
+            android:text="@string/d6_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d6"
@@ -226,7 +224,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="*"
+            android:text="@string/mul_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/mul"
@@ -236,14 +234,13 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="/"
+            android:text="@string/div_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/div"
             android:onClick="onClickAdded" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_weight="1"
@@ -256,7 +253,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="7"
+            android:text="@string/d7_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d7"
@@ -265,7 +262,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="8"
+            android:text="@string/d8_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d8"
@@ -274,7 +271,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="9"
+            android:text="@string/d9_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d9"
@@ -291,7 +288,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="("
+            android:text="@string/left_bracket_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/left_bracket"
@@ -301,7 +298,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text=")"
+            android:text="@string/right_bracket_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/right_bracket"
@@ -319,7 +316,7 @@
             android:layout_weight="2"
             android:textSize="@dimen/bottoms_font"
 
-            android:text="0"
+            android:text="@string/d0_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/d0"
@@ -328,7 +325,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/bottoms_font"
 
-            android:text=","
+            android:text="@string/comma_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/comma"
@@ -349,6 +346,5 @@
             android:onClick="onClickAdded" />
 
     </LinearLayout>
-
 
 </LinearLayout>

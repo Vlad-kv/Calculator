@@ -153,10 +153,10 @@ public class MainActivity extends AppCompatActivity {
         try{
             res = parse();
         } catch (IncorrectExpressionException ex) {
-            result.setText("Incorrect expression.");
+            result.setText(R.string.incorrect_expression_exception_text);
             return;
         } catch (MyException ex) {
-            result.setText("Error");
+            result.setText(R.string.error_text);
             return;
         }
         result.setText(String.valueOf(res));
