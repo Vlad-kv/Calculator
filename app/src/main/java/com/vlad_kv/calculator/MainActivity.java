@@ -1,6 +1,5 @@
 package com.vlad_kv.calculator;
 
-import android.icu.math.BigDecimal;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +8,21 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String KEY_INPUT_STR = "INPUT_STR";
+    private static final String KEY_SELECTION_POS = "SELECTION_POS";
+    private static final String KEY_RESULT_STR = "RESULT_STR";
 
     private TextView result;
     private EditText input;
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(KEY_INPUT_STR, input.getText().toString());
+        outState.putInt(KEY_SELECTION_POS, input.getSelectionEnd());
+        outState.putString(KEY_RESULT_STR, result.getText().toString());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         result = (TextView)findViewById(R.id.result);
         input = (EditText)findViewById(R.id.input);
+
+        if (savedInstanceState != null) {
+            input.setText(savedInstanceState.getString(KEY_INPUT_STR));
+            input.setSelection(savedInstanceState.getInt(KEY_SELECTION_POS));
+            result.setText(savedInstanceState.getString(KEY_RESULT_STR));
+        }
     }
 
     private String inStr;
@@ -123,9 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
     double parse() throws MyException {
         pos = 0;
-        return getSum();
+        double res = getSum();
+        if (nextChar() != 0) {
+            throw new IncorrectExpressionException();
+        }
+        return res;
     }
-
 
     public void onClickEqv(View view) {
         inStr = input.getText().toString();
@@ -147,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
         input.setText("");
         result.setText("");
     }
-
 
     public void onClickAdded(View view) {
         String s = "";
@@ -202,6 +220,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.comma:
                 s = ",";
+                break;
+            case R.id.space_button:
+                s = " ";
                 break;
         }
 
